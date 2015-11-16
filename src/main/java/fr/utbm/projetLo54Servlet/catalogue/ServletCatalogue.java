@@ -46,17 +46,39 @@ public class ServletCatalogue extends HttpServlet
          String nomCourse = req.getParameter("keyword");	
 	 String dateCourse = req.getParameter("data");
          String lieuxCourse = req.getParameter("location");
+       
+        CourseSessionService courseGet = new CourseSessionService();
          
-
-         
-        CourseService courseGet = new CourseService();
-         
-       // List<Course> courseSession =  courseGet.getCourseByDate(null);
+        Date date = stringToDate(dateCourse);
+                
+        List<CourseSession> courseSessionByCrit = courseGet.getCourseByCriteria(nomCourse, date,lieuxCourse);
         
-       // req.setAttribute("ListCourseSession", courseSession);
+        req.setAttribute("ListCourseSession", courseSessionByCrit);
         
         this.getServletContext().getRequestDispatcher( "/WEB-INF/catalogue.jsp" ).forward( req, resp );
 
+    }
+    
+    
+    protected Date stringToDate(String dateS){
+        Date date = null;
+        
+        if(dateS != null){
+            
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            String date1 = dateS;
+
+            try {
+              date = simpleDateFormat.parse(date1);
+              System.out.println(date);
+            } catch (ParseException e) {
+              e.printStackTrace();
+            }
+            
+        }
+        
+        return date;
     }
     
     
