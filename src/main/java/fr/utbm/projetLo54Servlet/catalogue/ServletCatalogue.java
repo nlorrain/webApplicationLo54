@@ -9,6 +9,7 @@ import fr.utbm.projectlo54.core.entity.Course;
 import fr.utbm.projectlo54.core.entity.CourseSession;
 import fr.utbm.projectlo54.core.service.CourseService;
 import fr.utbm.projectlo54.core.service.CourseSessionService;
+import fr.utbm.projectlo54.core.service.LocationService;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -32,10 +33,18 @@ public class ServletCatalogue extends HttpServlet
     public void doGet( HttpServletRequest request, HttpServletResponse response )	throws ServletException, IOException
     {
         
-        CourseSessionService courseSession = new CourseSessionService();
+       //Get Location service
+       LocationService locationService = new LocationService();
+       List<String> listeCity = locationService.getCity();
+       listeCity.add(0,"*");
+       request.setAttribute("listeCity", listeCity);
+       
+        
+       //Get Course Session service 
+       CourseSessionService courseSession = new CourseSessionService();
        List<CourseSession> listCourse= courseSession.getCourseSession(0, 15);
        
-       request.setAttribute("ListCourseSession", listCourse);
+       request.setAttribute("listeCourseSession", listCourse);
        
        this.getServletContext().getRequestDispatcher( "/WEB-INF/catalogue.jsp" ).forward( request, response );
     } 
@@ -43,17 +52,30 @@ public class ServletCatalogue extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
+        
+        //Get Location service
+        LocationService locationService = new LocationService();
+        List<String> listeCity = locationService.getCity();
+        listeCity.add(0,"*");
+        req.setAttribute("listeCity", listeCity);
+
+       // Cretiria 
          String nomCourse = req.getParameter("keyword");	
 	 String dateCourse = req.getParameter("data");
          String lieuxCourse = req.getParameter("location");
        
+         if(lieuxCourse.equals("*")){
+             lieuxCourse = null;
+         }
+         
+                      
         CourseSessionService courseGet = new CourseSessionService();
          
         Date date = stringToDate(dateCourse);
                 
         List<CourseSession> courseSessionByCrit = courseGet.getCourseByCriteria(nomCourse, date,lieuxCourse);
         
-        req.setAttribute("ListCourseSession", courseSessionByCrit);
+        req.setAttribute("listeCourseSession", courseSessionByCrit);
         
         this.getServletContext().getRequestDispatcher( "/WEB-INF/catalogue.jsp" ).forward( req, resp );
 

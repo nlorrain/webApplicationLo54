@@ -1,25 +1,59 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+<%-- 
+    Document   : inscription
+    Created on : 16 nov. 2015, 14:54:14
+    Author     : java
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="resources/theme1/css/style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Connection</title>
+        <title>JSP Page</title>
     </head>
     <body>
-         <form action="LoginServlet">
-			 <h1>Connection</h1>
-			 <p>Welcome, Please log on to continue
-                             
-                         <br/>  <br/>                             
-                         <label>User Name :  </label>
-			 <input type="text" name="userId" />
-                         <br/> 
-			 <label>Password : </label>
-			 <input type="password" name="password" />
-                         <br/> <br/>  
-			 <button type="submit">Log-on</button>		 
-		 </form>
+        <h1>Inscription</h1>
+        <br/><br/> 
+        
+        <form action="inscription" method="POST">
+                         
+            <div class="label">
+                <label>Last Name:</label>
+                <input name="lastName" type="text">
+            </div> 
+            
+            <br>   
+            
+                                     
+            <div class="label">
+                <label>First Name:</label>
+                <input name="firstName" type="text">
+            </div> 
+            
+            <br>   
+
+            <div class="label">
+                <label>Address:</label>
+                <input name="address" type="text">
+            </div> 
+            
+            <br>   
+
+            <div class="label">
+                <label>Phone:</label>
+                <input name="phone" type="text">
+            </div> 
+            
+            <br>   
+            
+            <div class="label">
+                <label>Email:</label>
+                <input name="Email" type="text">
+            </div> 
+            
+            <br>  
+            <button type="submit">Inscrire</button>		 
+        </form>
     </body>
 </html>

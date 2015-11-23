@@ -7,8 +7,17 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>/WEB-INF/inscription.jsp</welcome-file>
+        <welcome-file>Catalogue</welcome-file>
     </welcome-file-list>
+    <servlet>
+        <servlet-name>Inscription</servlet-name>
+        <servlet-class>fr.utbm.projetLo54Servlet.login.ServletInscription</servlet-class>   
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Inscription</servlet-name>
+        <url-pattern>/inscription</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>Catalogue</servlet-name>
         <servlet-class>fr.utbm.projetLo54Servlet.catalogue.ServletCatalogue</servlet-class>
@@ -16,13 +25,5 @@
     <servlet-mapping>
         <servlet-name>Catalogue</servlet-name>
         <url-pattern>/Catalogue</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ServletInscription</servlet-name>
-        <servlet-class>fr.utbm.projetLo54Servlet.login.ServletInscription</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ServletInscription</servlet-name>
-        <url-pattern>/ServletInscription</url-pattern>
     </servlet-mapping>
 </web-app>

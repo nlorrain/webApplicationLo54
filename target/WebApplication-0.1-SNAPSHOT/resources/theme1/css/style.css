@@ -1,0 +1,13 @@
+label
+{
+    display: block;
+    width: 150px;
+    float: left;
+}
+
+.trait
+{
+    background-color: black;
+    height: 1pt;
+    width: 70%;
+}

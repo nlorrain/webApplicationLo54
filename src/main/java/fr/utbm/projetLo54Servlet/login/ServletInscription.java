@@ -5,11 +5,19 @@
  */
 package fr.utbm.projetLo54Servlet.login;
 
+import fr.utbm.projectlo54.core.entity.Client;
+import fr.utbm.projectlo54.core.entity.CourseSession;
+import fr.utbm.projectlo54.core.service.ClientService;
+import fr.utbm.projectlo54.core.service.CourseSessionService;
+import fr.utbm.projectlo54.core.service.LocationService;
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -20,8 +28,13 @@ public class ServletInscription  extends HttpServlet
 
     public void doGet( HttpServletRequest request, HttpServletResponse response )	throws ServletException, IOException
     {
-         String userId = request.getParameter("userId");	
-	 String password = request.getParameter("password");
+        HttpSession session = request.getSession();
+        
+        String courseID = request.getParameter("cours");	
+        
+        session.setAttribute("CourseID", courseID);
+        
+         /*String password = request.getParameter("password");
          //connection
 	 if(true)
          {
@@ -31,9 +44,36 @@ public class ServletInscription  extends HttpServlet
 
 	}
          else
-         {
-           this.getServletContext().getRequestDispatcher( "/WEB-INF/login.jsp" ).forward( request, response );
-         }
+         {*/
+           this.getServletContext().getRequestDispatcher( "/WEB-INF/inscription.jsp" ).forward( request, response );
+        
     }
+    
+     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        HttpSession session = req.getSession();
+        
+        String lastName = req.getParameter("lastName");
+        String firstName = req.getParameter("firstName");
+        String addresse = req.getParameter("addresse");
+        String phone = req.getParameter("phone");
+        String email = req.getParameter("email");
+        String stringCourseSession = (String) session.getAttribute("CourseID");
+        
+        
+        CourseSessionService courseSessionService = new CourseSessionService();
+        
+       // CourseSession courseSession = courseSessionService.getSessionById(stringCourseSession);
+        
+        ClientService clientService = new ClientService();
+        //Client c = new Client(lastName, firstName, addresse, phone, email, idCourseSession);
+        
+        clientService.registerClient(null);
+        
+         this.getServletContext().getRequestDispatcher( "/WEB-INF/catalogue.jsp" ).forward( req, resp );
+    }
+    
+    
 }
 
