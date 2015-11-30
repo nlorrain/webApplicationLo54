@@ -2,7 +2,7 @@
 <%@ page import="java.util.*" %>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="ressources/theme1/css/style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Catalogue</title>
     </head>
