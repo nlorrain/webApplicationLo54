@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.utbm.projetLo54Servlet.login;
+package fr.utbm.projetLo54Servlet.inscription;
 
 import fr.utbm.projectlo54.core.entity.Client;
 import fr.utbm.projectlo54.core.entity.ClientDTO;
@@ -35,18 +35,7 @@ public class ServletInscription  extends HttpServlet
         
         session.setAttribute("CourseID", courseID);
         
-         /*String password = request.getParameter("password");
-         //connection
-	 if(true)
-         {
-		 request.getSession().setAttribute("user", userId);
-                 response.sendRedirect("./Catalogue?MotsCle=");
-               //  this.getServletContext().getRequestDispatcher( "/Wee" ).forward( request, response );
-
-	}
-         else
-         {*/
-           this.getServletContext().getRequestDispatcher( "/WEB-INF/inscription.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/inscription.jsp" ).forward( request, response );
         
     }
     
@@ -70,7 +59,7 @@ public class ServletInscription  extends HttpServlet
         cDTO.setAddress(addresse);
         cDTO.setPhone(phone);
         cDTO.setEmail(email);
-        cDTO.setCourseSessionId(1);
+        cDTO.setCourseSessionId(stringCourseSession);
         
         ClientService cliService = new ClientService();
         cliService.fromDTOtoClient(cDTO);

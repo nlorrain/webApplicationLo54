@@ -11,13 +11,12 @@
     </welcome-file-list>
     <servlet>
         <servlet-name>Inscription</servlet-name>
-        <servlet-class>fr.utbm.projetLo54Servlet.login.ServletInscription</servlet-class>   
+        <servlet-class>fr.utbm.projetLo54Servlet.inscription.ServletInscription</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Inscription</servlet-name>
         <url-pattern>/inscription</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>Catalogue</servlet-name>
         <servlet-class>fr.utbm.projetLo54Servlet.catalogue.ServletCatalogue</servlet-class>

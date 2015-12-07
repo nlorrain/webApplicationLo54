@@ -12,7 +12,7 @@
         <div align="center" style="margin:50px; border-color:  black;border-width: thick;"> 
 
             <form action="Catalogue" method="POST">
-                <table>listeCourseSession
+                <table>
                     <tr></tr>
                     <tr>
                         <td>
@@ -24,7 +24,7 @@
                         <td>
                             <div class="label">
                                 <label>Start date :</label>
-                                <input name="date" type="text"  placeholder="AAAA/MM/JJ">
+                                <input name="date" type="text"  placeholder="AAAA-MM-JJ">
                             </div>
                         <td>
                     </tr>
