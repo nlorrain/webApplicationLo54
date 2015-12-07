@@ -12,7 +12,7 @@
         <div align="center" style="margin:50px; border-color:  black;border-width: thick;"> 
 
             <form action="Catalogue" method="POST">
-                <table>
+                <table>listeCourseSession
                     <tr></tr>
                     <tr>
                         <td>

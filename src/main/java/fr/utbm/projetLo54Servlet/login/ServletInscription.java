@@ -6,6 +6,7 @@
 package fr.utbm.projetLo54Servlet.login;
 
 import fr.utbm.projectlo54.core.entity.Client;
+import fr.utbm.projectlo54.core.entity.ClientDTO;
 import fr.utbm.projectlo54.core.entity.CourseSession;
 import fr.utbm.projectlo54.core.service.ClientService;
 import fr.utbm.projectlo54.core.service.CourseSessionService;
@@ -61,23 +62,23 @@ public class ServletInscription  extends HttpServlet
         String email = req.getParameter("email");
         int stringCourseSession = Integer.valueOf((String)session.getAttribute("CourseID"));
         
-        /*
+        ClientDTO cDTO =  new ClientDTO();
         
-        Ajouter contrôl sur les données entrés
+                 
+        cDTO.setFirstName(lastName);
+        cDTO.setLastName(firstName);
+        cDTO.setAddress(addresse);
+        cDTO.setPhone(phone);
+        cDTO.setEmail(email);
+        cDTO.setCourseSessionId(1);
+        
+        ClientService cliService = new ClientService();
+        cliService.fromDTOtoClient(cDTO);
         
         
-        */
-        
-        CourseSessionService courseSessionService = new CourseSessionService();
-        
-        CourseSession courseSession = courseSessionService.getCourseSessionById(stringCourseSession);
-        
-        ClientService clientService = new ClientService();
-        Client c = new Client(lastName, firstName, addresse, phone, email, courseSession);
-        
-        clientService.registerClient(c);
-        
-         this.getServletContext().getRequestDispatcher( "/WEB-INF/catalogue.jsp" ).forward( req, resp );
+       
+        //this.getServletContext().getRequestDispatcher( "/Catalogue" ).forward( req, resp );
+         resp.sendRedirect("Catalogue");
     }
     
     
