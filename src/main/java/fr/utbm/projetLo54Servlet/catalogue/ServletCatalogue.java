@@ -5,19 +5,15 @@
  */
 package fr.utbm.projetLo54Servlet.catalogue;
 
-import fr.utbm.projectlo54.core.entity.Course;
+
 import fr.utbm.projectlo54.core.entity.CourseSession;
-import fr.utbm.projectlo54.core.service.CourseService;
 import fr.utbm.projectlo54.core.service.CourseSessionService;
 import fr.utbm.projectlo54.core.service.LocationService;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ServletCatalogue extends HttpServlet
 {
 
+    @Override
     public void doGet( HttpServletRequest request, HttpServletResponse response )	throws ServletException, IOException
     {
         
@@ -61,7 +58,7 @@ public class ServletCatalogue extends HttpServlet
 
        // Cretiria 
          String nomCourse = req.getParameter("keyword");	
-	 String dateCourse = req.getParameter("data");
+	 String dateCourse = req.getParameter("date");
          String lieuxCourse = req.getParameter("location");
        
          if(lieuxCourse.equals("*")){
@@ -70,7 +67,7 @@ public class ServletCatalogue extends HttpServlet
          
                       
         CourseSessionService courseGet = new CourseSessionService();
-         
+        dateCourse = dateCourse;
         Date date = stringToDate(dateCourse);
                 
         List<CourseSession> courseSessionByCrit = courseGet.getCourseByCriteria(nomCourse, date,lieuxCourse);
@@ -84,10 +81,10 @@ public class ServletCatalogue extends HttpServlet
     
     protected Date stringToDate(String dateS){
         Date date = null;
-        
+
         if(dateS != null){
             
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             String date1 = dateS;
 
