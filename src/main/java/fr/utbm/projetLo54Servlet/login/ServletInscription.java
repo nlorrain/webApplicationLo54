@@ -56,20 +56,26 @@ public class ServletInscription  extends HttpServlet
         
         String lastName = req.getParameter("lastName");
         String firstName = req.getParameter("firstName");
-        String addresse = req.getParameter("addresse");
+        String addresse = req.getParameter("address");
         String phone = req.getParameter("phone");
         String email = req.getParameter("email");
-        String stringCourseSession = (String) session.getAttribute("CourseID");
+        int stringCourseSession = Integer.valueOf((String)session.getAttribute("CourseID"));
         
+        /*
+        
+        Ajouter contrôl sur les données entrés
+        
+        
+        */
         
         CourseSessionService courseSessionService = new CourseSessionService();
         
-       // CourseSession courseSession = courseSessionService.getSessionById(stringCourseSession);
+        CourseSession courseSession = courseSessionService.getCourseSessionById(stringCourseSession);
         
         ClientService clientService = new ClientService();
-        //Client c = new Client(lastName, firstName, addresse, phone, email, idCourseSession);
+        Client c = new Client(lastName, firstName, addresse, phone, email, courseSession);
         
-        clientService.registerClient(null);
+        clientService.registerClient(c);
         
          this.getServletContext().getRequestDispatcher( "/WEB-INF/catalogue.jsp" ).forward( req, resp );
     }

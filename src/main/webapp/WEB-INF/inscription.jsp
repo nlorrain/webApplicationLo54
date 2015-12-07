@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="ressources/theme1/css/style.css">
+        <link rel="stylesheet" type="text/css" href="resources/theme1/css/style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -48,7 +48,7 @@
                         <td>
                             <div class="label">
                                 <label>Email:</label>
-                                <input name="Email" type="text">
+                                <input name="email" type="text">
                             </div>
                         </td>
                         <td align="center">

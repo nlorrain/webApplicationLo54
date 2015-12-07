@@ -2,7 +2,7 @@
 <%@ page import="java.util.*" %>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="ressources/theme1/css/style.css">
+        <link rel="stylesheet" type="text/css" href="resources/theme1/css/style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Catalogue</title>
     </head>
@@ -24,7 +24,7 @@
                         <td>
                             <div class="label">
                                 <label>Start date :</label>
-                                <input name="date" type="text"  placeholder="JJ/MM/AAAA">
+                                <input name="date" type="text"  placeholder="AAAA/MM/JJ">
                             </div>
                         <td>
                     </tr>

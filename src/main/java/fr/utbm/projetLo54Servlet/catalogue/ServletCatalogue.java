@@ -69,7 +69,6 @@ public class ServletCatalogue extends HttpServlet
         CourseSessionService courseGet = new CourseSessionService();
         dateCourse = dateCourse;
         Date date = stringToDate(dateCourse);
-                
         List<CourseSession> courseSessionByCrit = courseGet.getCourseByCriteria(nomCourse, date,lieuxCourse);
         
         req.setAttribute("listeCourseSession", courseSessionByCrit);
@@ -82,7 +81,7 @@ public class ServletCatalogue extends HttpServlet
     protected Date stringToDate(String dateS){
         Date date = null;
 
-        if(dateS != null){
+        if(!dateS.isEmpty()){
             
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
