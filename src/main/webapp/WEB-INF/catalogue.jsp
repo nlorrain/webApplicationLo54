@@ -61,7 +61,7 @@
                 </thead>
                 <c:forEach items="${listeCourseSession}" var="courseSession">  
                     <tr>  
-                        <td>${courseSession.id}</td> 
+                        <td>${courseSession.courseCode.code}</td> 
                         <td>${courseSession.courseCode.title}</td> 
                         <td>${courseSession.startDate}</td>   
                         <td>${courseSession.endDate}</td>   
